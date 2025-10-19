@@ -255,8 +255,8 @@ public class RoomManager
                 if (!room.Simulation.HasRaceSettings)
                     return false;
 
-                // Joining in this state causes issues, to find out why
-                if (room.Simulation.RaceState == RaceState.LoadingIntoRace)
+                // For now just prevent joins into in-progress lobbies entirely, causes instability
+                if (room.Simulation.RaceState >= RaceState.LoadingIntoRace || !room.Simulation.CanJoinAsRacer())
                     return false;
             }
             
