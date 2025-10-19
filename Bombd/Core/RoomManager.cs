@@ -254,6 +254,10 @@ public class RoomManager
                 // before advertising the session.
                 if (!room.Simulation.HasRaceSettings)
                     return false;
+
+                // Joining in this state causes issues, to find out why
+                if (room.Simulation.RaceState == RaceState.LoadingIntoRace)
+                    return false;
             }
             
             foreach (KeyValuePair<string, string> attribute in attributes)
