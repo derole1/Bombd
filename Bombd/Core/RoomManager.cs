@@ -286,7 +286,7 @@ public class RoomManager
             attr["__MM_MODE_G"] = visibility;
             attr["__MM_MODE_P"] = visibility;
             attr["__JOIN_MODE"] = visibility;
-            attr["IS_LOCKED"] = (room.Simulation.RaceState >= RaceState.LoadingIntoRace || !room.Simulation.CanJoinAsRacer()) ? "1" : "0";
+            attr["IS_LOCKED"] = (room.Simulation != null && (room.Simulation.RaceState >= RaceState.LoadingIntoRace || !room.Simulation.CanJoinAsRacer())) ? "1" : "0";
 
             attr["__MAX_PLAYERS"] = settings.MaxHumans.ToString();
             
